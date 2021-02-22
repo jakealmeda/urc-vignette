@@ -15,19 +15,61 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class URCVignetteJavaScripts {
 
+
+	private $ctimer_expiry = 2, // in minutes
+			$cookie_name = 'urc_viggy';
+
+
+	// handle the session
+	public function urc_viggy_session() {
+
+		//global $_COOKIE;
+
+		//$ctimer_start = time();
+		$ct_expiry = ( time() + ( $this->ctimer_expiry * 60 ) ); // minutes
+
+	    if( !isset( $_COOKIE[ $this->cookie_name ] ) ) {
+
+	    	// set initial value of the cookie to 1 - indication that the pop-up needs to show
+	    	setcookie( $this->cookie_name, 1, $ct_expiry, '/' );
+
+	    } else {
+
+	    	/* ----------------------
+	    	 * edit the cookie value
+	    	 * we change the value to tell JS that PHP will not trigger the pop-up anymore
+	    	 * JS will now utilize its randomizer to decide when to show the pop-up window again
+	    	 * ------------------- */
+			setcookie( $this->cookie_name, 2, $ct_expiry, '/');
+
+	    }
+
+	}
+
+
 	// JS | last arg is true - will be placed before </body>
 	public function urc_vignette_enqueue_scripts() {
+
+		global $_COOKIE;
+		// check if cookie exists
+		if( isset( $_COOKIE[ $this->cookie_name ] ) ) {
+			// get value
+			$pop_cookie = $_COOKIE[ $this->cookie_name ];
+		} else {
+			// cookie doesn't exist, add a counter not to show the pop-up window
+			$pop_cookie = 2;
+		}
 
 		$script_name = 'urc_vignette_js';
 
 	    // last arg is true - will be placed before </body>
 	    wp_register_script( $script_name, plugin_dir_url( __FILE__ ).'js/asset.js', array( 'jquery' ), '1.0.0.0', TRUE );
-	     
+	    
 	    // Localize the script with new data
-	    /*$ajax_files = array(
-	        'full_mc_form' 		=> 		$this->urc_get_full_subscribe_form(),
+	    $ajax_files = array(
+	        'urc_vignette_cookie' 		=> 		$pop_cookie,
 	    );
-	    wp_localize_script( $script_name, 'urc_vignette', $ajax_files );*/
+	    wp_localize_script( $script_name, 'urc_vignette', $ajax_files );
 	     
 	    // Enqueued script with localized data.
 	    wp_enqueue_script( $script_name );
@@ -96,8 +138,8 @@ class URCVignetteJavaScripts {
 	}
 
 
-	// 
-	public function urc_vignette_sample() {
+	// actual pop-up form
+	public function urc_vignette_popup_form() {
 
 		?>
 		<div class="popup-overlay">
@@ -116,18 +158,15 @@ class URCVignetteJavaScripts {
 		
 	}
 
-	
-	/*public function show_counter() {
-		?><input type="text" id="popup-randomizer" /><?php
-	}*/
-
 
 	// Construct
 	public function __construct() {
 
-		add_action( 'genesis_before_content', array( $this, 'urc_vignette_sample' ) );
+		// add the form in the document
+		add_action( 'genesis_before_content', array( $this, 'urc_vignette_popup_form' ) );
 
-		//add_action( 'genesis_before_header', array( $this, 'show_counter' ) );
+		// add cookie creation during init execution
+		add_action( 'init', array( $this, 'urc_viggy_session' ) );
 
 		// enqueue scripts
 		add_action( 'wp_enqueue_scripts', array( $this, 'urc_vignette_enqueue_scripts' ) );
