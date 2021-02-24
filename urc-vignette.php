@@ -143,17 +143,17 @@ class URCVignetteJavaScripts {
 	public function urc_vignette_popup_form() {
 
 		?>
-		<div class="popup-overlay">
-			<!--Creates the popup content-->
-			<div class="popup-content">
-
+		<div class="popup-content">
+			<div class="popup-info">
 				<!--span class="close">&times;</span-->
 				<?php echo $this->urc_get_full_subscribe_form(); ?>
 				<input type="hidden" id="popup-counter" />
 				<input type="hidden" id="popup-randomizer" />
 				<button class="close">Close</button>
-
 			</div>
+		</div>
+		<div class="popup-overlay">
+			<!--Creates the popup content-->
 		</div>
 		<?php
 		
@@ -168,7 +168,7 @@ class URCVignetteJavaScripts {
 	public function __construct() {
 
 		// add the form in the document
-		add_action( 'genesis_before_content', array( $this, 'urc_vignette_popup_form' ) );
+		add_action( 'genesis_before', array( $this, 'urc_vignette_popup_form' ) );
 
 		//add_action( 'genesis_after_header', array( $this, 'show_me' ) );
 
