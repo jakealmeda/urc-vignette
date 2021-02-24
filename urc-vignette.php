@@ -60,7 +60,7 @@ class URCVignetteJavaScripts {
 			$pop_cookie = 2;
 		}
 
-		$script_name = 'urc_vignette_js';
+		/*$script_name = 'urc_vignette_js';
 
 	    // last arg is true - will be placed before </body>
 	    wp_register_script( $script_name, plugin_dir_url( __FILE__ ).'js/asset.js', array( 'jquery' ), '1.0.0.0', TRUE );
@@ -73,6 +73,7 @@ class URCVignetteJavaScripts {
 	     
 	    // Enqueued script with localized data.
 	    wp_enqueue_script( $script_name );
+	    */
 
 		// enqueue styles
 		wp_enqueue_style( 'urc_vignette_css', plugin_dir_url( __FILE__ ).'css/style.css' );
@@ -158,12 +159,18 @@ class URCVignetteJavaScripts {
 		
 	}
 
+	/*public function show_me() {
+		?><input type="text" id="popup-randomizer" /><?php
+	}*/
+
 
 	// Construct
 	public function __construct() {
 
 		// add the form in the document
 		add_action( 'genesis_before_content', array( $this, 'urc_vignette_popup_form' ) );
+
+		//add_action( 'genesis_after_header', array( $this, 'show_me' ) );
 
 		// add cookie creation during init execution
 		add_action( 'init', array( $this, 'urc_viggy_session' ) );
