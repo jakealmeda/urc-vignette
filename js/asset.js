@@ -2,10 +2,12 @@
 
 	var DocTopLocation, PopUpCounter, PopUpRandomizer,
 		CookiePopUp = urc_vignette.urc_vignette_cookie,
-		TarWinScroll = $( document ).height() / 2, // get half of the window's height
-		//TarWinScroll = 400,
-		MaxRandCount = 5, // randomizer will choose from 1 to MaxRandCount
-		TarRandCount = [ "2", "4" ]; // pop up will show if any of these are chosen by the randomizer
+		//TarWinScroll = $( document ).height() / 2, // get half of the window's height
+		TarWinScroll = 50,
+		//MaxRandCount = 5, // randomizer will choose from 1 to MaxRandCount
+		MaxRandCount = 2,
+		//TarRandCount = [ "2", "4" ]; // pop up will show if any of these are chosen by the randomizer
+		TarRandCount = [ "1", "2" ];
 	
 	//appends an "active" class to .popup and .popup-content when the "Open" button is clicked
 	/*$( ".open" ).on( "click", function() {
@@ -46,17 +48,9 @@
 					PopUpRandomizer = $( "#popup-randomizer" ).val();
 					// inArray returns the location of the instance
 					if( $.inArray( PopUpRandomizer, TarRandCount ) > -1 ) {
-						/*
-						// show the pop up window
-						$( ".popup-overlay, .popup-content" ).addClass( "active" );
-
-						// add counter
-						$( "#popup-counter" ).val( "1" );
 						
-						// disable scrolling
-						$('body').addClass( 'stop-scrolling' );
-						*/
 						TriggerViggyPopUp();
+
 					}
 
 				}
@@ -76,7 +70,8 @@
 		$( ".popup-overlay, .popup-content" ).addClass( "active" );
 
 		// add counter
-		$( "#popup-counter" ).val( "1" );
+		//$( "#popup-counter" ).val( "1" );
+		$( "#popup-counter" ).val( "0" );
 		
 		// disable scrolling
 		$('body').addClass( 'stop-scrolling' );
