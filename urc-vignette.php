@@ -138,25 +138,7 @@ class URCVignetteJavaScripts {
 	}
 
 
-	// actual pop-up form
-	/*public function urc_vignette_popup_form_mark() {
-
-		?>
-		<div class="popup-content">
-			<div class="popup-info">
-				<!--span class="close">&times;</span-->
-				<?php echo $this->urc_get_full_subscribe_form(); ?>
-				<input type="hidden" id="popup-counter" />
-				<!--input type="hidden" id="popup- randomizer" /-->
-				<button class="close">Close</button>
-			</div>
-		</div>
-		<div class="popup-overlay">
-			<!--Creates the popup content-->
-		</div>
-		<?php
-		
-	}*/
+	// container for the pop up window
 	public function urc_vignette_popup_form() {
 
 		?>
@@ -176,9 +158,11 @@ class URCVignetteJavaScripts {
 		
 	}
 
-	public function show_me() {
+
+	// for development/validation purposes only
+	/*public function show_me() {
 		?><input type="text" id="popup-randomizer" /><?php
-	}
+	}*/
 
 
 	// Construct
@@ -187,7 +171,7 @@ class URCVignetteJavaScripts {
 		// add the form in the document
 		add_action( 'genesis_footer', array( $this, 'urc_vignette_popup_form' ) );
 
-		add_action( 'genesis_after_header', array( $this, 'show_me' ) );
+		//add_action( 'genesis_after_header', array( $this, 'show_me' ) );
 
 		// add cookie creation during init execution
 		add_action( 'init', array( $this, 'urc_viggy_session' ) );

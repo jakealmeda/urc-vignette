@@ -2,7 +2,8 @@
 
 	var DocTopLocation, PopUpCounter, PopUpRandomizer,
 		CookiePopUp = urc_vignette.urc_vignette_cookie,
-		TarWinScroll = 400,
+		TarWinScroll = $( document ).height() / 2, // get half of the window's height
+		//TarWinScroll = 400,
 		MaxRandCount = 5, // randomizer will choose from 1 to MaxRandCount
 		TarRandCount = [ "2", "4" ]; // pop up will show if any of these are chosen by the randomizer
 	
@@ -17,7 +18,7 @@
 
 		// choose a random number within the range
 		$( "#popup-randomizer" ).val( Math.floor( Math.random() * MaxRandCount ) + 1 );
-		
+
 	});
 
 
@@ -69,6 +70,8 @@
 
 	function TriggerViggyPopUp() {
 
+		$( ".popup-overlay" ).css( "top", TarWinScroll );
+
 		// show the pop up window
 		$( ".popup-overlay, .popup-content" ).addClass( "active" );
 
@@ -84,6 +87,20 @@
 	//removes the "active" class to .popup and .popup-content when the "Close" button is clicked 
 	//$( ".close, .popup-overlay" ).on( "click", function() {
 	$( ".close" ).on( "click", function() {
+
+		// hide the pop up window
+		$( ".popup-overlay, .popup-content" ).removeClass( "active" );
+
+		// enable scrolling
+		$('body').removeClass( 'stop-scrolling' );
+
+	});
+
+
+	$( ".popup-overlay" ).on( "click", function(e) {
+
+		//Do nothing if .popup-overlay was not directly clicked
+     	if(e.target !== e.currentTarget) return;
 
 		// hide the pop up window
 		$( ".popup-overlay, .popup-content" ).removeClass( "active" );
