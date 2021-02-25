@@ -68,6 +68,7 @@
 
 		// show the pop up window
 		$( ".popup-overlay, .popup-content" ).addClass( "active" );
+		$( ".popup-cover" ).addClass( "activ" );
 
 		// add counter
 		//$( "#popup-counter" ).val( "1" );
@@ -85,6 +86,7 @@
 
 		// hide the pop up window
 		$( ".popup-overlay, .popup-content" ).removeClass( "active" );
+		$( ".popup-cover" ).removeClass( "activ" );
 
 		// enable scrolling
 		$('body').removeClass( 'stop-scrolling' );
@@ -99,6 +101,7 @@
 
 		// hide the pop up window
 		$( ".popup-overlay, .popup-content" ).removeClass( "active" );
+		$( ".popup-cover" ).removeClass( "activ" );
 
 		// enable scrolling
 		$('body').removeClass( 'stop-scrolling' );

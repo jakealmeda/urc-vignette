@@ -149,13 +149,18 @@ class URCVignetteJavaScripts {
 				<!--span class="close">&times;</span-->
 				<?php echo $this->urc_get_full_subscribe_form(); ?>
 				<input type="hidden" id="popup-counter" />
-				<!--input type="hidden" id="popup-randomizer" /-->
+				<input type="hidden" id="popup-randomizer" />
 				<button class="close">Close</button>
 
 			</div>
 		</div>
 		<?php
 		
+	}
+
+	// for adding popup cover
+	public function urc_popup_cover() {
+		?><div class="popup-cover"></div><?php
 	}
 
 
@@ -170,6 +175,9 @@ class URCVignetteJavaScripts {
 
 		// add the form in the document
 		add_action( 'genesis_footer', array( $this, 'urc_vignette_popup_form' ) );
+
+		// add the popup cover
+		add_action( 'genesis_before', array( $this, 'urc_popup_cover' ) );
 
 		//add_action( 'genesis_after_header', array( $this, 'show_me' ) );
 
