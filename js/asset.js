@@ -17,7 +17,7 @@
 
 		// choose a random number within the range
 		$( "#popup-randomizer" ).val( Math.floor( Math.random() * MaxRandCount ) + 1 );
-
+		
 	});
 
 

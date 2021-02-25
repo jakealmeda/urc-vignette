@@ -1,14 +1,71 @@
-.site-container {
-    position: relative;
+.popup-overlay {
+	/*Hides pop-up when there is no "active" class*/
+	visibility: hidden;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: #ffffff;
+	border: 3px solid #666666;
+	width: 100%;
+	height: 100%;
+	/*left: 25%;*/
+	z-index: 100;
+}
+
+.popup-overlay.active {
+	/*displays pop-up when "active" class is present*/
+	visibility: visible;
+	text-align: center;
+}
+
+.transparent {
+	/*background-color: rgba(255,255,255,0.5); */
+	background: rgba(0,0,0,0.7);
 }
 
 .popup-content {
-    position: absolute;
-    max-width: 348px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 1.5rem;
-    z-index: 1;
-    background-color: yellow;
+	/*Hides pop-up content when there is no "active" class */
+	visibility: hidden;
+	border: none;
+	max-width: 500px;
+	/*max-width: 348px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);*/
+	padding: 1.5rem;
+	background-color: yellow;
+	/*z-index: 1;
+	top: 50%;
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);*/
+}
+.center {
+	margin: auto;
+}
+
+.popup-content.active {
+	/*Shows pop-up content when "active" class is present */
+	visibility: visible;
+}
+
+button {
+	display: inline-block;
+	vertical-align: middle;
+	border-radius: 30px;
+	margin: .20rem;
+	font-size: 1rem;
+	color: #666666;
+	background: #ffffff;
+	border: 1px solid #666666;
+}
+
+button:hover {
+	border: 1px solid #666666;
+	background: #666666;
+	color: #ffffff;
+}
+
+.stop-scrolling { 
+    height: 100%; 
+    overflow: hidden; 
 }
