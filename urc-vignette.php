@@ -142,11 +142,7 @@ class URCVignetteJavaScripts {
 	public function urc_vignette_popup_form() {
 
 		?>
-		<div class="popup-overlay transparent">
-			<!-- Show the close button -->
-			<div class="close-btn"><?php
-				echo '<img src="'.plugin_dir_url( __FILE__ ).'images/btn_close.png" border="0" />';
-			?></div>
+		<div class="popup-overlay">
 
 			<!--Creates the popup content-->
 			<div class="popup-content center">
@@ -165,7 +161,9 @@ class URCVignetteJavaScripts {
 
 	// for adding popup cover
 	public function urc_popup_cover() {
-		?><div class="popup-cover"></div><?php
+		?><div class="popup-cover"><?php
+		echo '<div class="close-btn"><img src="'.plugin_dir_url( __FILE__ ).'images/btn_close.png" border="0" /></div>';
+		?></div><?php
 	}
 
 
