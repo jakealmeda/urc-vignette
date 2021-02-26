@@ -9,8 +9,14 @@
 	background: rgba(255,0,0,0.7);
 }
 
-.popup-cover.activ{
+.popup-cover.activ {
 	visibility: visible;
+}
+
+.close-btn {
+	height: 20px;
+	width: auto;
+	align-self: right;
 }
 
 .popup-overlay {

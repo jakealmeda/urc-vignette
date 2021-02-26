@@ -62,6 +62,7 @@
 	});
 
 
+	// show the pop-up and related items
 	function TriggerViggyPopUp() {
 
 		$( ".popup-overlay" ).css( "top", TarWinScroll );
@@ -80,31 +81,33 @@
 	}
 
 
-	//removes the "active" class to .popup and .popup-content when the "Close" button is clicked 
-	//$( ".close, .popup-overlay" ).on( "click", function() {
-	$( ".close" ).on( "click", function() {
-
+	// hide the pop-up and related items
+	function TriggerViggyPopUpNot() {
 		// hide the pop up window
 		$( ".popup-overlay, .popup-content" ).removeClass( "active" );
 		$( ".popup-cover" ).removeClass( "activ" );
 
 		// enable scrolling
 		$('body').removeClass( 'stop-scrolling' );
+	}
+
+
+	//removes the "active" class to .popup and .popup-content when the "Close" button is clicked 
+	//$( ".close, .popup-overlay" ).on( "click", function() {
+	$( ".close" ).on( "click", function() {
+
+		TriggerViggyPopUpNot();
 
 	});
 
 
 	$( ".popup-overlay" ).on( "click", function(e) {
-
-		//Do nothing if .popup-overlay was not directly clicked
+		
+		// Do nothing if .popup-overlay was not directly clicked
+		// (elements inside the said DIV is clicked)
      	if(e.target !== e.currentTarget) return;
 
-		// hide the pop up window
-		$( ".popup-overlay, .popup-content" ).removeClass( "active" );
-		$( ".popup-cover" ).removeClass( "activ" );
-
-		// enable scrolling
-		$('body').removeClass( 'stop-scrolling' );
+		TriggerViggyPopUpNot();
 
 	});
 
@@ -122,6 +125,13 @@
 		e.preventDefault();
 
 	});*/
+
+
+	$( ".close-btn" ).on( "click", function() {
+
+		TriggerViggyPopUpNot();
+
+	});
 
 
 })( jQuery );

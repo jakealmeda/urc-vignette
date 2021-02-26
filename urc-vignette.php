@@ -143,6 +143,11 @@ class URCVignetteJavaScripts {
 
 		?>
 		<div class="popup-overlay transparent">
+			<!-- Show the close button -->
+			<div class="close-btn"><?php
+				echo '<img src="'.plugin_dir_url( __FILE__ ).'images/btn_close.png" border="0" />';
+			?></div>
+
 			<!--Creates the popup content-->
 			<div class="popup-content center">
 
