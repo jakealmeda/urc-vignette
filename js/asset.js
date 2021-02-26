@@ -94,7 +94,7 @@
 
 	//removes the "active" class to .popup and .popup-content when the "Close" button is clicked 
 	//$( ".close, .popup-overlay" ).on( "click", function() {
-	$( ".close" ).on( "click", function() {
+	$( ".close, .popup-cover, .close-btn" ).on( "click", function() {
 
 		TriggerViggyPopUpNot();
 
@@ -125,13 +125,6 @@
 		e.preventDefault();
 
 	});*/
-
-
-	$( ".close-btn" ).on( "click", function() {
-
-		TriggerViggyPopUpNot();
-
-	});
 
 
 })( jQuery );
