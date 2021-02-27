@@ -72,8 +72,7 @@
 		$( ".popup-cover" ).addClass( "activ" );
 
 		// add counter
-		//$( "#popup-counter" ).val( "1" );
-		$( "#popup-counter" ).val( "0" );
+		$( "#popup-counter" ).val( "1" );
 		
 		// disable scrolling
 		$('body').addClass( 'stop-scrolling' );
