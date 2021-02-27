@@ -2,8 +2,8 @@
 
 	var DocTopLocation, PopUpCounter, PopUpRandomizer,
 		CookiePopUp = urc_vignette.urc_vignette_cookie,
-		TarWinScroll = $( document ).height() / 2, // get half of the window's height
-		//TarWinScroll = 500,
+		//TarWinScroll = $( document ).height() / 2, // get half of the window's height
+		TarWinScroll = 0,
 		MaxRandCount = 5, // randomizer will choose from 1 to MaxRandCount
 		//MaxRandCount = 2,
 		TarRandCount = [ "2", "4" ]; // pop up will show if any of these are chosen by the randomizer
@@ -65,7 +65,7 @@
 	// show the pop-up and related items
 	function TriggerViggyPopUp() {
 
-		$( ".popup-overlay" ).css( "top", TarWinScroll );
+		//$( ".popup-overlay" ).css( "top", TarWinScroll );
 
 		// show the pop up window
 		$( ".popup-overlay, .popup-content" ).addClass( "active" );

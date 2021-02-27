@@ -1,3 +1,9 @@
+@media (max-width: 767px) {
+	.hide-onmobile {
+		display: none;
+	}
+}
+
 .popup-cover {
 	visibility: hidden;
 	position: fixed;
@@ -27,16 +33,12 @@
 .popup-overlay {
 	/*Hides pop-up when there is no "active" class*/
 	visibility: hidden;
-	/*position: fixed;
-	top: 0;*/
-	position: absolute;
-	left: 0;
-	/*background: #ffffff;*/
-	/*border: 3px solid #666666;*/
-	width: 100%;
-	height: 100%;
-	/*left: 25%;*/
 	z-index: 11;
+	position: fixed;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .popup-overlay.active {

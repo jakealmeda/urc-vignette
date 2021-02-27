@@ -93,7 +93,7 @@ class URCVignetteJavaScripts {
 				<div class="item-subscribe cta-subscribe">
 				<div class="pretitle"><span class="fontsize-xsml">For A</span> <span class="fontsize-sml">LIMITED TIME ONLY</span><br><span class="fontsize-xsml">Get </span> <span class="fontsize-sml">FREE</span> <span class="fontsize-xsml">Copies Of My</span></div>
 				<div class="photo"></div>
-				<div class="title"><span class="fontsize-med">Enter Your Name &amp; Email Below for Instant Access:</span></div>
+				<div class="title hide-onmobile"><span class="fontsize-med">Enter Your Name &amp; Email Below for Instant Access:</span></div>
 
 					<!-- Begin Mailchimp Signup Form -->
 					<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
@@ -106,7 +106,7 @@ class URCVignetteJavaScripts {
 					<form action="https://understandingrelationships.us2.list-manage.com/subscribe/post?u=8fcb0ea8d36b15793f40f7ee8&amp;id=0463614dd6" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
 						<div id="mc_embed_signup_scroll">
 
-						<div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+						<div class="indicates-required hide-onmobile"><span class="asterisk">*</span> indicates required</div>
 						<div class="mc-field-group">
 						<label for="mce-EMAIL">Email  <span class="asterisk">*</span>
 						</label>
@@ -129,7 +129,7 @@ class URCVignetteJavaScripts {
 
 					<!--End mc_embed_signup-->
 
-				<div class="disclaimer">Enter your name &amp; email in the boxes above to gain access to FREE Digital Online Versions of my popular eBooks &amp; audio course. When you click the “Instant Access” button, you will gain access to the members area of my website to read my eBooks, &amp; listen to the audio lessons right in your web browser! You’ll also get my best pickup, dating, relationship &amp; life success secrets &amp; strategies in my FREE newsletter. All information is 100% confidential. “Employ your time in improving yourself by other men’s writings, so that you shall gain easily what others have labored hard for.” ~ Socrates. “The man who doesn’t read good books has no advantage over the man who can’t read them.” ~ Mark Twain</div>
+				<div class="disclaimer">Enter your name &amp; email in the boxes above to gain access to FREE Digital Online Versions of my popular eBooks &amp; audio course. When you click the “Instant Access” button, you will gain access to the members area of my website to read my eBooks, &amp; listen to the audio lessons right in your web browser!</div>
 				</div>
 				</div>';
 
@@ -148,10 +148,10 @@ class URCVignetteJavaScripts {
 			<div class="popup-content center">
 
 				<!--span class="close">&times;</span-->
+				<a class="close" style="color:white;padding:0.5rem;background-color:black;display:block;">Close Ad</a>
 				<?php echo $this->urc_get_full_subscribe_form(); ?>
 				<input type="hidden" id="popup-counter" />
 				<input type="hidden" id="popup-randomizer" />
-				<button class="close">Close</button>
 
 			</div>
 		</div>
