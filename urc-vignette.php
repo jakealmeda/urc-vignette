@@ -169,7 +169,11 @@ class URCVignetteJavaScripts {
 
 	// for development/validation purposes only
 	/*public function show_me() {
-		?><input type="text" id="popup-randomizer" /><?php
+		?><h2>Counter</h2>
+		<input type="text" id="popup-counter" />
+		<h2>Randomizer</h2>
+		<input type="text" id="popup-randomizer" />
+		<?php
 	}*/
 
 
