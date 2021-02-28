@@ -4,10 +4,10 @@
 		CookiePopUp = urc_vignette.urc_vignette_cookie,
 		TarWinScroll = $( document ).height() / 4, // get half of the window's height
 		//TarWinScroll = 0,
-		MaxRandCount = 5, // randomizer will choose from 1 to MaxRandCount
-		//MaxRandCount = 2,
-		TarRandCount = [ "2", "4" ]; // pop up will show if any of these are chosen by the randomizer
-		//TarRandCount = [ "1", "2" ];
+		//MaxRandCount = 5, // randomizer will choose from 1 to MaxRandCount
+		MaxRandCount = 2,
+		//TarRandCount = [ "2", "4" ]; // pop up will show if any of these are chosen by the randomizer
+		TarRandCount = [ "1", "2" ];
 	
 	//appends an "active" class to .popup and .popup-content when the "Open" button is clicked
 	/*$( ".open" ).on( "click", function() {
@@ -72,8 +72,8 @@
 		$( ".popup-cover" ).addClass( "activ" );
 
 		// add counter
-		//$( "#popup-counter" ).val( "1" ); // show only once
-		$( "#popup-counter" ).val( "0" ); // show every refresh
+		$( "#popup-counter" ).val( "1" ); // show only once
+		//$( "#popup-counter" ).val( "0" ); // show every refresh
 		
 		// disable scrolling
 		$('body').addClass( 'stop-scrolling' );
