@@ -162,7 +162,7 @@ class URCVignetteJavaScripts {
 				<!--span class="close">&times;</span-->
 				<a class="close" style="color:white;padding:0.5rem;background-color:black;display:block;">Close Ad</a>
 				<?php echo $this->urc_get_full_subscribe_form(); ?>
-				<!--input type="hidden" id="popup-counter" /-->
+				<input type="hidden" id="popup-counter" />
 				<!--input type="hidden" id="popup-randomizer" /-->
 
 			</div>
@@ -180,13 +180,13 @@ class URCVignetteJavaScripts {
 
 
 	// for development/validation purposes only
-	public function show_me() {
+	/*public function show_me() {
 		?><h2>Counter</h2>
 		<input type="text" id="popup-counter" />
 		<!--h2>Randomizer</h2>
 		<input type="text" id="popup-randomizer" /-->
 		<?php
-	}
+	}*/
 
 
 	// Construct
@@ -198,7 +198,7 @@ class URCVignetteJavaScripts {
 		// add the popup cover
 		add_action( 'genesis_before', array( $this, 'urc_popup_cover' ) );
 
-		add_action( 'genesis_after_header', array( $this, 'show_me' ) );
+		//add_action( 'genesis_after_header', array( $this, 'show_me' ) );
 
 		// add cookie creation during init execution
 		add_action( 'init', array( $this, 'urc_viggy_session' ) );

@@ -1,13 +1,14 @@
 <?php
-/**
- * Plugin Name: URC Vignette
- * Description: Show subscribe form
- * Version: 1.0
- * Author: Jake Almeda
- * Author URI: http://smarterwebpackages.com/
- * Network: true
- * License: GPL2
- */
+//
+// * Plugin 
+// Name: URC Vignette
+// * Des cription: Show subscribe form
+// * Ve rsion: 1.0
+// * Autho r: Jake Almeda
+// * Au thor URI: http://smarterwebpackages.com/
+// * Netw ork: true
+// * Lic ense: GPL2
+// */
 
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
