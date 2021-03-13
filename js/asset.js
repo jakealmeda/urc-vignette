@@ -1,13 +1,10 @@
 (function($) {
 
-	var DocTopLocation, PopUpCounter, PopUpRandomizer,
+	var DocTopLocation, PopUpCounter, //PopUpRandomizer,
 		CookiePopUp = urc_vignette.urc_vignette_cookie,
-		TarWinScroll = $( document ).height() / 4, // get half of the window's height
-		//TarWinScroll = 0,
+		TarWinScroll = $( document ).height() / 4; // get half of the window's height
 		//MaxRandCount = 5, // randomizer will choose from 1 to MaxRandCount
-		MaxRandCount = 2,
 		//TarRandCount = [ "2", "4" ]; // pop up will show if any of these are chosen by the randomizer
-		TarRandCount = [ "1", "2" ];
 	
 	//appends an "active" class to .popup and .popup-content when the "Open" button is clicked
 	/*$( ".open" ).on( "click", function() {
@@ -16,13 +13,20 @@
 
 
 	// execute when document has finished loading
-	$( document ).ready( function() {
+	/*$( document ).ready( function() {
 
 		// choose a random number within the range
 		$( "#popup-randomizer" ).val( Math.floor( Math.random() * MaxRandCount ) + 1 );
 
-	});
+	});*/
 
+/*
+	if ( !!$.cookie('token') ) {
+	 // have cookie
+	} else {
+	 // no cookie
+	}
+*/
 
 	$( window ).scroll( function( event ) {
 
@@ -40,7 +44,7 @@
 
 	    		TriggerViggyPopUp();
 
-	    	} else {
+	    	}/* else {
 
 				if( PopUpCounter != 1 ) {
 
@@ -55,7 +59,7 @@
 
 				}
 
-			} // if( CookiePopUp == 1 ) {
+			}*/ // if( CookiePopUp == 1 ) {
 
 	    }
 

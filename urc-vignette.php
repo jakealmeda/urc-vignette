@@ -17,30 +17,41 @@ class URCVignetteJavaScripts {
 
 
 	private $ctimer_expiry = 1, // in minutes
-			$cookie_name = 'urc_viggy';
+			$cookie_name = 'urc_viggy',
+			$cookie_val;
 
 
 	// handle the session
 	public function urc_viggy_session() {
 
-		global $_COOKIE;
+		//global $_COOKIE;
 
 		//$ctimer_start = time();
 		$ct_expiry = ( time() + ( $this->ctimer_expiry * 60 ) ); // minutes
 
 	    if( !isset( $_COOKIE[ $this->cookie_name ] ) ) {
 
+	    	$ctrigger = 1;
+
 	    	// set initial value of the cookie to 1 - indication that the pop-up needs to show
-	    	setcookie( $this->cookie_name, 1, $ct_expiry, '/' );
+	    	setcookie( $this->cookie_name, $ctrigger, $ct_expiry, '/' );
+
+	    	// set variable for jQuery
+	    	$this->cookie_val = $ctrigger;
 
 	    } else {
+
+	    	$ctrigger = 2;
 
 	    	/* ----------------------
 	    	 * edit the cookie value
 	    	 * we change the value to tell JS that PHP will not trigger the pop-up anymore
 	    	 * JS will now utilize its randomizer to decide when to show the pop-up window again
 	    	 * ------------------- */
-			setcookie( $this->cookie_name, 2, $ct_expiry, '/');
+			setcookie( $this->cookie_name, $ctrigger, $ct_expiry, '/');
+
+			// set variable for jQuery
+	    	$this->cookie_val = $ctrigger;
 
 	    }
 
@@ -50,15 +61,15 @@ class URCVignetteJavaScripts {
 	// JS | last arg is true - will be placed before </body>
 	public function urc_vignette_enqueue_scripts() {
 
-		global $_COOKIE;
+		/*global $_COOKIE;
 		// check if cookie exists
 		if( isset( $_COOKIE[ $this->cookie_name ] ) ) {
 			// get value
 			$pop_cookie = $_COOKIE[ $this->cookie_name ];
 		} else {
 			// cookie doesn't exist, add a counter not to show the pop-up window
-			$pop_cookie = 1;
-		}
+			//$pop_cookie = 1;
+		}*/
 
 		$script_name = 'urc_vignette_js';
 
@@ -67,7 +78,8 @@ class URCVignetteJavaScripts {
 	    
 	    // Localize the script with new data
 	    $ajax_files = array(
-	        'urc_vignette_cookie' 		=> 		$pop_cookie,
+	        //'urc_vignette_cookie' 		=> 		$pop_cookie,
+	        'urc_vignette_cookie' 		=> 		$this->cookie_val,
 	    );
 	    wp_localize_script( $script_name, 'urc_vignette', $ajax_files );
 	     
@@ -150,8 +162,8 @@ class URCVignetteJavaScripts {
 				<!--span class="close">&times;</span-->
 				<a class="close" style="color:white;padding:0.5rem;background-color:black;display:block;">Close Ad</a>
 				<?php echo $this->urc_get_full_subscribe_form(); ?>
-				<input type="hidden" id="popup-counter" />
-				<input type="hidden" id="popup-randomizer" />
+				<!--input type="hidden" id="popup-counter" /-->
+				<!--input type="hidden" id="popup-randomizer" /-->
 
 			</div>
 		</div>
@@ -162,19 +174,19 @@ class URCVignetteJavaScripts {
 	// for adding popup cover
 	public function urc_popup_cover() {
 		?><div class="popup-cover"><?php
-		echo '<div class="close-btn"><img src="'.plugin_dir_url( __FILE__ ).'images/btn_close.png" border="0" /></div>';
+			echo '<div class="close-btn"><img src="'.plugin_dir_url( __FILE__ ).'images/btn_close.png" border="0" /></div>';
 		?></div><?php
 	}
 
 
 	// for development/validation purposes only
-	/*public function show_me() {
+	public function show_me() {
 		?><h2>Counter</h2>
 		<input type="text" id="popup-counter" />
-		<h2>Randomizer</h2>
-		<input type="text" id="popup-randomizer" />
+		<!--h2>Randomizer</h2>
+		<input type="text" id="popup-randomizer" /-->
 		<?php
-	}*/
+	}
 
 
 	// Construct
@@ -186,7 +198,7 @@ class URCVignetteJavaScripts {
 		// add the popup cover
 		add_action( 'genesis_before', array( $this, 'urc_popup_cover' ) );
 
-		//add_action( 'genesis_after_header', array( $this, 'show_me' ) );
+		add_action( 'genesis_after_header', array( $this, 'show_me' ) );
 
 		// add cookie creation during init execution
 		add_action( 'init', array( $this, 'urc_viggy_session' ) );
