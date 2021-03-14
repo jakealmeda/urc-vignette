@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class URCVignetteJavaScripts {
 
 
-	private $ctimer_expiry = 1, // in minutes
+	private $ctimer_expiry = 20, // in minutes
 			$cookie_name = 'urc_viggy',
 			$cookie_val;
 
