@@ -102,7 +102,7 @@ class URCVignetteJavaScripts {
 		} else {*/
 
 			return '<div class="group mailchimp-subscribe">
-				<div class="item-subscribe cta-subscribe">
+				<div class="item-subscribe">
 				<div class="pretitle"><span class="fontsize-xsml">For A</span> <span class="fontsize-sml">LIMITED TIME ONLY</span><br><span class="fontsize-xsml">Get </span> <span class="fontsize-sml">FREE</span> <span class="fontsize-xsml">Copies Of My</span></div>
 				<div class="photo"></div>
 				<div class="title hide-onmobile"><span class="fontsize-med">Enter Your Name &amp; Email Below for Instant Access:</span></div>
