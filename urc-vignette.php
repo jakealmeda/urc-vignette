@@ -95,11 +95,11 @@ class URCVignetteJavaScripts {
 	// Subcribe form
 	private function urc_get_full_subscribe_form() {
 
-		if( function_exists( 'setup_original_subscribe' ) ) {
+		/*if( function_exists( 'setup_original_subscribe' ) ) {
 
 			return setup_original_subscribe();
 
-		} else {
+		} else {*/
 
 			return '<div class="group mailchimp-subscribe">
 				<div class="item-subscribe cta-subscribe">
@@ -145,7 +145,7 @@ class URCVignetteJavaScripts {
 				</div>
 				</div>';
 
-		}
+		//}
 
 	}
 
