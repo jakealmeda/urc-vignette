@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class URCVignetteJavaScripts {
 
 
-	private $ctimer_expiry = 20, // in minutes
+	private $ctimer_expiry = 1, // in minutes
 			$cookie_name = 'urc_viggy',
 			$cookie_val;
 
@@ -93,7 +93,7 @@ class URCVignetteJavaScripts {
 
 
 	// Subcribe form
-	private function urc_get_full_subscribe_form() {
+	private function urc_get_full_subscribe_form_viggy() {
 
 		/*if( function_exists( 'setup_original_subscribe' ) ) {
 
@@ -143,7 +143,8 @@ class URCVignetteJavaScripts {
 
 				<div class="disclaimer">Enter your name &amp; email in the boxes above to gain access to FREE Digital Online Versions of my popular eBooks &amp; audio course. When you click the “Instant Access” button, you will gain access to the members area of my website to read my eBooks, &amp; listen to the audio lessons right in your web browser!</div>
 				</div>
-				</div>';
+				</div>
+				<div><h1>HERE!</h1></div>';
 
 		//}
 
@@ -161,7 +162,7 @@ class URCVignetteJavaScripts {
 
 				<!--span class="close">&times;</span-->
 				<a class="close" style="color:white;padding:0.5rem;background-color:black;display:block;">Close Ad</a>
-				<?php echo $this->urc_get_full_subscribe_form(); ?>
+				<?php echo $this->urc_get_full_subscribe_form_viggy(); ?>
 				<input type="hidden" id="popup-counter" />
 				<!--input type="hidden" id="popup-randomizer" /-->
 
