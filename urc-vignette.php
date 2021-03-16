@@ -153,8 +153,11 @@ class URCVignetteJavaScripts {
 
 				<!--span class="close">&times;</span-->
 				<a class="close" style="color:white;padding:0.5rem;background-color:black;display:block;">Close Ad</a>
-				<?php echo $this->urc_get_full_subscribe_form_viggy(); ?>
-				<input type="hidden" id="popup-counter" />
+				<div class="popup-form">
+					<?php echo $this->urc_get_full_subscribe_form_viggy(); ?>
+					<input type="hidden" id="popup-counter" />
+				</div>
+				<a class="close" style="color:white;padding:0.5rem;background-color:black;display:block;">Close Ad</a>
 				<!--input type="hidden" id="popup-randomizer" /-->
 
 			</div>

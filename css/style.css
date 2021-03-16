@@ -1,6 +1,13 @@
+.popup-form {
+	padding: 1.5rem;
+}
+
 @media (max-width: 767px) {
 	.hide-onmobile {
 		display: none;
+	}
+	.popup-form {
+		padding: 0.5rem;
 	}
 }
 
@@ -61,7 +68,6 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);*/
-	padding: 1.5rem;
 	background-color: white;
 	/*z-index: 1;
 	top: 50%;
