@@ -18,42 +18,103 @@ class URCVignetteJavaScripts {
 
 	private $ctimer_expiry = 20, // in minutes
 			$cookie_name = 'urc_viggy',
+			$cookie_guide = 'hide', // show to show or whatever value to hide
 			$cookie_val;
 
 
 	// handle the session
 	public function urc_viggy_session() {
+		
+		// set global variable to check what page we're in
+		//global $post;
+    	//$post_slug = $post->post_name;
 
-		//global $_COOKIE;
+		$current_url = explode( "/", $_SERVER['REQUEST_URI'] );
+		$set_home = 0;
+		$set_f_ebook = 0;
 
-		//$ctimer_start = time();
-		$ct_expiry = ( time() + ( $this->ctimer_expiry * 60 ) ); // minutes
+		//if ( is_front_page() && is_home() || is_front_page() || is_home() ) {
+		if( empty( $current_url[ 1 ] ) ) {
 
-	    if( !isset( $_COOKIE[ $this->cookie_name ] ) ) {
+			// HOME PAGE
+			// set variable for jQuery
+			$this->cookie_val = 2;
 
-	    	$ctrigger = 1;
+			// if statement guide
+			if( $this->cookie_guide == 'show' ) {
+				echo '<h3>HOMEPAGE - do not show</h3>';
+			}
 
-	    	// set initial value of the cookie to 1 - indication that the pop-up needs to show
-	    	setcookie( $this->cookie_name, $ctrigger, $ct_expiry, '/' );
+			$set_home = 0;
 
-	    	// set variable for jQuery
-	    	$this->cookie_val = $ctrigger;
+		} else {
 
-	    } else {
+			$set_home = 1;
 
-	    	$ctrigger = 2;
+		}
 
-	    	/* ----------------------
-	    	 * edit the cookie value
-	    	 * we change the value to tell JS that PHP will not trigger the pop-up anymore
-	    	 * JS will now utilize its randomizer to decide when to show the pop-up window again
-	    	 * ------------------- */
-			setcookie( $this->cookie_name, $ctrigger, $ct_expiry, '/');
+		if( $current_url[ 1 ] == 'free-ebook' ) {
+
+		//if( $post->post_name == 'free-ebook' ) {
+		//if( $current_url[ 1 ] == 'free-ebook' ) {
 
 			// set variable for jQuery
-	    	$this->cookie_val = $ctrigger;
+			$this->cookie_val = 2;
 
-	    }
+			// if statement guide
+			if( $this->cookie_guide == 'show' ) {
+				echo '<h3>'.strtoupper( $current_url[ 1 ] ).'  - do not show</h3>';
+			}
+
+			$set_f_ebook = 0;
+		} else {
+
+			$set_f_ebook = 1;
+
+		}
+
+		// create cookies if not homepage and free-ebook
+		if( $set_home == 1 && $set_f_ebook == 1 ) {
+
+			$ct_expiry = ( time() + ( $this->ctimer_expiry * 60 ) ); // minutes
+
+			if( !isset( $_COOKIE[ $this->cookie_name ] ) ) {
+
+				$ctrigger = 1;
+
+				// set initial value of the cookie to 1 - indication that the pop-up needs to show
+				setcookie( $this->cookie_name, $ctrigger, $ct_expiry, '/' );
+
+				// set variable for jQuery
+				$this->cookie_val = $ctrigger;
+
+				// if statement guide
+				if( $this->cookie_guide == 'show' ) {
+					echo '<h3>Not homepage - show</h3>';
+				}
+
+			} else {
+
+				$ctrigger = 2;
+
+				/* ----------------------
+				 * edit the cookie value
+				 * we change the value to tell JS that PHP will not trigger the pop-up anymore
+				 * JS will now utilize its randomizer to decide when to show the pop-up window again
+				 * ------------------- */
+				setcookie( $this->cookie_name, $ctrigger, $ct_expiry, '/' );
+
+				// set variable for jQuery
+				$this->cookie_val = $ctrigger;
+
+				// if statement guide
+				if( $this->cookie_guide == 'show' ) {
+					echo '<h3>Not homepage - Do NOT show, cookie exists</h3>';
+				}
+
+			}
+
+		}
 
 	}
 
@@ -197,9 +258,10 @@ class URCVignetteJavaScripts {
 
 		// add cookie creation during init execution
 		add_action( 'init', array( $this, 'urc_viggy_session' ) );
+		//add_action( 'template_redirect', array( $this, 'urc_viggy_session' ) );
 
 		// enqueue scripts
-		add_action( 'wp_enqueue_scripts', array( $this, 'urc_vignette_enqueue_scripts' ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'urc_vignette_enqueue_scripts' ), 2000 );
 
 	}
 
