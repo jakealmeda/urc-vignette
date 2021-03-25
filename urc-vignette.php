@@ -16,14 +16,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 class URCVignetteJavaScripts {
 
 
-	private $ctimer_expiry = 20, // in minutes
+	/*private $ctimer_expiry = 20, // in minutes
 			$cookie_name = 'urc_viggy',
 			$cookie_guide = 'hide', // show to show or whatever value to hide
 			$cookie_val;
-
+*/       
 
 	// handle the session
-	public function urc_viggy_session() {
+	/*public function urc_viggy_session() {
 		
 		// set global variable to check what page we're in
 		//global $post;
@@ -96,13 +96,13 @@ class URCVignetteJavaScripts {
 			} else {
 
 				$ctrigger = 2;
-
+*/
 				/* ----------------------
 				 * edit the cookie value
 				 * we change the value to tell JS that PHP will not trigger the pop-up anymore
 				 * JS will now utilize its randomizer to decide when to show the pop-up window again
 				 * ------------------- */
-				setcookie( $this->cookie_name, $ctrigger, $ct_expiry, '/' );
+/*				setcookie( $this->cookie_name, $ctrigger, $ct_expiry, '/' );
 
 				// set variable for jQuery
 				$this->cookie_val = $ctrigger;
@@ -116,7 +116,7 @@ class URCVignetteJavaScripts {
 
 		}
 
-	}
+	}*/
 
 
 	// JS | last arg is true - will be placed before </body>
@@ -132,6 +132,10 @@ class URCVignetteJavaScripts {
 			//$pop_cookie = 1;
 		}*/
 
+		// set global variable to check what page we're in
+		global $post;
+    	//$post_slug = $post->post_name;
+
 		$script_name = 'urc_vignette_js';
 
 	    // last arg is true - will be placed before </body>
@@ -139,8 +143,8 @@ class URCVignetteJavaScripts {
 	    
 	    // Localize the script with new data
 	    $ajax_files = array(
-	        //'urc_vignette_cookie' 		=> 		$pop_cookie,
-	        'urc_vignette_cookie' 		=> 		$this->cookie_val,
+	        //'urc_vignette_cookie' 		=> 		$this->cookie_val,
+	        'urc_page'					=> $post->post_name,
 	    );
 	    wp_localize_script( $script_name, 'urc_vignette', $ajax_files );
 	     
@@ -217,9 +221,9 @@ class URCVignetteJavaScripts {
 				<div class="popup-form">
 					<?php echo $this->urc_get_full_subscribe_form_viggy(); ?>
 					<input type="hidden" id="popup-counter" />
+					<input type="hidden" id="popup-randomizer" />
 				</div>
 				<a class="close" style="color:white;padding:0.5rem;background-color:black;display:block;">Close Ad</a>
-				<!--input type="hidden" id="popup-randomizer" /-->
 
 			</div>
 		</div>
@@ -237,10 +241,11 @@ class URCVignetteJavaScripts {
 
 	// for development/validation purposes only
 	/*public function show_me() {
-		?><h2>Counter</h2>
+		?>
+		<h2>Counter</h2>
 		<input type="text" id="popup-counter" />
-		<!--h2>Randomizer</h2>
-		<input type="text" id="popup-randomizer" /-->
+		<h2>Randomizer</h2>
+		<input type="text" id="popup-randomizer" />
 		<?php
 	}*/
 
@@ -257,8 +262,8 @@ class URCVignetteJavaScripts {
 		//add_action( 'genesis_after_header', array( $this, 'show_me' ) );
 
 		// add cookie creation during init execution
-		add_action( 'init', array( $this, 'urc_viggy_session' ) );
-		//add_action( 'template_redirect', array( $this, 'urc_viggy_session' ) );
+		//add_action( 'init', array( $this, 'urc_viggy_session' ) );
+		//add_action( 'template_redirect', array( $this, 'urc_viggy_session' ) ); // only use if using WP functions
 
 		// enqueue scripts
 		add_action( 'wp_enqueue_scripts', array( $this, 'urc_vignette_enqueue_scripts' ), 2000 );

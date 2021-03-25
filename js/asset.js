@@ -1,10 +1,11 @@
 (function($) {
 
 	var DocTopLocation, PopUpCounter, //PopUpRandomizer,
-		CookiePopUp = urc_vignette.urc_vignette_cookie,
-		TarWinScroll = $( document ).height() / 4; // get half of the window's height
-		//MaxRandCount = 5, // randomizer will choose from 1 to MaxRandCount
-		//TarRandCount = [ "2", "4" ]; // pop up will show if any of these are chosen by the randomizer
+//		CookiePopUp = urc_vignette.urc_vignette_cookie,
+		PageSlug = urc_vignette.urc_page,
+		TarWinScroll = $( document ).height() / 4, // get half of the window's height
+		MaxRandCount = 5, // randomizer will choose from 1 to MaxRandCount
+		TarRandCount = [ "2", "4" ]; // pop up will show if any of these are chosen by the randomizer
 	
 	//appends an "active" class to .popup and .popup-content when the "Open" button is clicked
 	/*$( ".open" ).on( "click", function() {
@@ -13,20 +14,13 @@
 
 
 	// execute when document has finished loading
-	/*$( document ).ready( function() {
+	$( document ).ready( function() {
 
 		// choose a random number within the range
 		$( "#popup-randomizer" ).val( Math.floor( Math.random() * MaxRandCount ) + 1 );
 
-	});*/
+	});
 
-/*
-	if ( !!$.cookie('token') ) {
-	 // have cookie
-	} else {
-	 // no cookie
-	}
-*/
 
 	$( window ).scroll( function( event ) {
 
@@ -40,13 +34,13 @@
 			PopUpCounter = $( "#popup-counter" ).val();
 
 	    	// Prioritize pop up for Cookie
-	    	if( CookiePopUp == 1 && PopUpCounter != 1 ) {
+/*	    	if( CookiePopUp == 1 && PopUpCounter != 1 ) {
 
 	    		TriggerViggyPopUp();
 
-	    	}/* else {
-
-				if( PopUpCounter != 1 ) {
+	    	} else {
+*/
+				if( PopUpCounter != 1 && PageSlug != 'free-ebook' ) {
 
 					// check randomizer
 					PopUpRandomizer = $( "#popup-randomizer" ).val();
@@ -59,7 +53,7 @@
 
 				}
 
-			}*/ // if( CookiePopUp == 1 ) {
+//			} // if( CookiePopUp == 1 ) {
 
 	    }
 
