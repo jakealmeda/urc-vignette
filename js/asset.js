@@ -4,9 +4,12 @@
 //		CookiePopUp = urc_vignette.urc_vignette_cookie,
 		PageSlug = urc_vignette.urc_page,
 		TarWinScroll = $( document ).height() / 4, // get half of the window's height
-		MaxRandCount = 5, // randomizer will choose from 1 to MaxRandCount
-		TarRandCount = [ "2", "4" ]; // pop up will show if any of these are chosen by the randomizer
-	
+//		MaxRandCount = 5, // randomizer will choose from 1 to MaxRandCount
+//		TarRandCount = [ "2", "4" ]; // pop up will show if any of these are chosen by the randomizer
+		MaxRandCount = 10,
+		TarRandCount = 1;
+
+
 	//appends an "active" class to .popup and .popup-content when the "Open" button is clicked
 	/*$( ".open" ).on( "click", function() {
 		$( ".popup-overlay, .popup-content" ).addClass( "active" );
@@ -44,8 +47,10 @@
 
 					// check randomizer
 					PopUpRandomizer = $( "#popup-randomizer" ).val();
+
 					// inArray returns the location of the instance
-					if( $.inArray( PopUpRandomizer, TarRandCount ) > -1 ) {
+					//if( $.inArray( PopUpRandomizer, TarRandCount ) > -1 ) {
+					if( PopUpRandomizer == TarRandCount ) {
 						
 						TriggerViggyPopUp();
 
