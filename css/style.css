@@ -104,3 +104,11 @@ button:hover {
 	height: 100%; 
 	overflow: hidden; 
 }
+
+.randon-inputs {
+	width: 20%;
+	border: none;
+	padding: 0 !important;
+	margin: none;
+
+}
