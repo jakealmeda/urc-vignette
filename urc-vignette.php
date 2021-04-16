@@ -245,8 +245,7 @@ class URCVignetteJavaScripts {
 		Counter:
 		<input type="text" id="popup-counter" class="randon-inputs" />
 		*/
-		?><div class="item dateauthor">
-		Randomizer:
+		?><div class="randomizer">Randomizer:
 		<input type="text" id="popup-randomizer" class="randon-inputs" />
 		</div><?php
 	}
@@ -262,7 +261,7 @@ class URCVignetteJavaScripts {
 		add_action( 'genesis_before', array( $this, 'urc_popup_cover' ) );
 
 		// genesis_after_header
-		add_action( 'genesis_before_sidebar_widget_area', array( $this, 'show_me' ) );
+		add_action( 'genesis_before_loop', array( $this, 'show_me' ) );
 
 		// add cookie creation during init execution
 		//add_action( 'init', array( $this, 'urc_viggy_session' ) );

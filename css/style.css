@@ -105,10 +105,16 @@ button:hover {
 	overflow: hidden; 
 }
 
+.randomizer {
+	font-size: 0.75rem;
+	line-height: 1.5;
+}
+
 .randon-inputs {
 	width: 20%;
-	border: none;
+	border: 0 !important;
 	padding: 0 !important;
-	margin: none;
-
+	margin: 0;
+	background-color: transparent;
+	font-size: 0.75rem !important;
 }
