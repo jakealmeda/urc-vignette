@@ -261,7 +261,7 @@ class URCVignetteJavaScripts {
 		add_action( 'genesis_before', array( $this, 'urc_popup_cover' ) );
 
 		// genesis_after_header
-		add_action( 'genesis_before_loop', array( $this, 'show_me' ) );
+		add_action( 'genesis_after_loop', array( $this, 'show_me' ) );
 
 		// add cookie creation during init execution
 		//add_action( 'init', array( $this, 'urc_viggy_session' ) );

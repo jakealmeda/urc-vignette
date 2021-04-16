@@ -3,7 +3,7 @@
 	var DocTopLocation, PopUpCounter, //PopUpRandomizer,
 //		CookiePopUp = urc_vignette.urc_vignette_cookie,
 		PageSlug = urc_vignette.urc_page,
-		TarWinScroll = 300, //$( document ).height() / 4, // get half of the window's height
+		TarWinScroll = 500, //$( document ).height() / 4, // get half of the window's height
 //		MaxRandCount = 5, // randomizer will choose from 1 to MaxRandCount
 //		TarRandCount = [ "2", "4" ]; // pop up will show if any of these are chosen by the randomizer
 		MaxRandCount = 4,
